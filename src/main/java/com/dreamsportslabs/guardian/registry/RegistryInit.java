@@ -3,8 +3,6 @@ package com.dreamsportslabs.guardian.registry;
 import com.dreamsportslabs.guardian.config.tenant.RsaKey;
 import com.dreamsportslabs.guardian.config.tenant.TenantConfig;
 import com.dreamsportslabs.guardian.config.tenant.TokenConfig;
-import com.dreamsportslabs.guardian.service.impl.idproviders.FacebookIdProvider;
-import com.dreamsportslabs.guardian.service.impl.idproviders.GoogleIdProvider;
 import io.fusionauth.jwt.Signer;
 import io.fusionauth.jwt.rsa.RSASigner;
 import lombok.SneakyThrows;
@@ -16,8 +14,6 @@ public class RegistryInit {
     String tenantId = tenantConfig.getTenantId();
     registry.put(tenantId, tenantConfig);
     registry.put(tenantId, getTokenSigner(tenantConfig.getTokenConfig()));
-    registry.put(tenantId, new FacebookIdProvider(tenantConfig.getFbConfig()));
-    registry.put(tenantId, new GoogleIdProvider(tenantConfig.getGoogleConfig()));
     return tenantConfig;
   }
 
