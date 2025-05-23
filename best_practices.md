@@ -1,0 +1,13 @@
+# [Java]
+- Dependencies and plugins should refer version defined in the properties
+- Use dependencyManagement to manage multiple dependencies for same project
+- API endpoints should be versioned. Example v1/cars
+- The event loop should never be blocked, if a blocking method needs to be executed use vertx.executeBlocking
+- Avoid creating worker vertcles, use standard verticles instead
+- All IO clients should be created in verticle and propagated to other classes using dependency injection
+- Object Mapper should be created once and used across the application
+- All clients should be closed in verticle stop method
+- Use `this.` for instance variables and methods
+- Code should follow controller, service, dao pattern
+- Never use Single.fromFuture, Completable.fromFuture, Observable.fromFuture as these are blocking calls
+- A single CI tool should be used for all workflows. Either github actions or jenkinsfile
