@@ -3,6 +3,7 @@ package com.dreamsportslabs.guardian.rest;
 
 import com.dreamsportslabs.guardian.dao.CarDao;
 import com.google.inject.Inject;
+import io.reactivex.rxjava3.core.Single;
 import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -28,6 +29,6 @@ public class Cars {
   @Produces(MediaType.APPLICATION_JSON)
   @Hidden
   public CompletionStage<List<String>> getCars() {
-    return carDao.getCars().toCompletionStage();
+    return Single.fromFuture(carDao.getCars()).toCompletionStage();
   }
 }

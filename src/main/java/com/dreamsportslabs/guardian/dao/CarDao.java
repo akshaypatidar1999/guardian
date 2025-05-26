@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.List;
 import java.util.Spliterator;
 import java.util.Spliterators;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.StreamSupport;
 
 @Slf4j
@@ -19,7 +20,7 @@ public class CarDao {
   private final MysqlClient mysqlClient;
 
 
-  public Single<List<String>> getCars() {
+  public CompletableFuture<List<String>> getCars() {
     return mysqlClient
         .getReaderPool()
         .query(Query.GET_CARS)
