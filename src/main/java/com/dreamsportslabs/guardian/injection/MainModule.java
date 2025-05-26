@@ -2,7 +2,6 @@ package com.dreamsportslabs.guardian.injection;
 
 import com.dreamsportslabs.guardian.client.MysqlClient;
 import com.dreamsportslabs.guardian.client.impl.MysqlClientImpl;
-import com.dreamsportslabs.guardian.registry.Registry;
 import com.dreamsportslabs.guardian.utils.SharedDataUtils;
 import com.google.inject.AbstractModule;
 import io.vertx.core.Vertx;
@@ -24,6 +23,5 @@ public class MainModule extends AbstractModule {
     bind(MysqlClient.class).toProvider(() -> SharedDataUtils.get(vertx, MysqlClientImpl.class));
     bind(Redis.class).toProvider(() -> SharedDataUtils.get(vertx, Redis.class));
     bind(WebClient.class).toProvider(() -> SharedDataUtils.get(vertx, WebClient.class));
-    bind(Registry.class).toProvider(() -> SharedDataUtils.get(vertx, Registry.class));
   }
 }
