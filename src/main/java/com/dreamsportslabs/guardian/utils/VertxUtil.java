@@ -56,11 +56,6 @@ public final class VertxUtil {
   }
 
   /** Helper wrapper on getOrCreate to getInstance. */
-  public static <T> T getInstanceFromSharedData(Vertx vertx, Class<T> clazz) {
-    return getInstanceFromSharedData(vertx, clazz, SHARED_DATA_DEFAULT_KEY);
-  }
-
-  /** Helper wrapper on getOrCreate to getInstance. */
   public static <T> T getInstanceFromSharedData(Vertx vertx, Class<T> clazz, String key) {
     log.debug(
         "getInstanceFromSharedData: vertx instance {} is getting type : {}  in key {}",
@@ -73,19 +68,6 @@ public final class VertxUtil {
         () -> {
           throw new NoSuchElementException("Cannot find default instance of " + clazz.getName());
         });
-  }
-
-  /**
-   * Accessible from anywhere in this verticle instance. Note: This has to be set from one of the
-   * VertxThreads (may cause NullPointerException otherwise) We are intentionally avoiding
-   * vertx.getOrCreateContext() to ensure better coding practices
-   */
-  public static <T> void setInstanceInContext(String key, T object) {
-    Vertx.currentContext().put(CONTEXT_INSTANCE_PREFIX + CLASS_PREFIX + key, object);
-  }
-
-  public static <T> T getInstanceFromContext(String key) {
-    return Vertx.currentContext().get(CONTEXT_INSTANCE_PREFIX + CLASS_PREFIX + key);
   }
 
   record ThreadSafe<T>(@Getter T object) implements Shareable {}

@@ -7,9 +7,7 @@ import static com.dreamsportslabs.guardian.constant.Constants.PORT;
 import static com.dreamsportslabs.guardian.constant.Constants.REDIS_HOST;
 import static com.dreamsportslabs.guardian.constant.Constants.REDIS_PORT;
 import static com.dreamsportslabs.guardian.constant.Constants.REDIS_TYPE;
-import static com.dreamsportslabs.guardian.constant.Constants.TENANT_CONFIG_REFRESH_INTERVAL;
 
-import com.dreamsportslabs.guardian.cache.TenantCache;
 import com.dreamsportslabs.guardian.client.MysqlClient;
 import com.dreamsportslabs.guardian.client.impl.MysqlClientImpl;
 import com.dreamsportslabs.guardian.registry.Registry;
@@ -47,12 +45,6 @@ public class MainVerticle extends AbstractVerticle {
               return config;
             })
         .flatMapCompletable(this::initializeClients)
-        .doOnComplete(
-            () ->
-                SharedDataUtils.put(
-                    vertx.getDelegate(),
-                    TenantCache.getInstance(
-                        Integer.parseInt(config.getString(TENANT_CONFIG_REFRESH_INTERVAL)))))
         .andThen(
             vertx.rxDeployVerticle(
                 () ->

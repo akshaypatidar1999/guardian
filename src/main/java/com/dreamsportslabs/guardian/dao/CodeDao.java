@@ -21,17 +21,6 @@ public class CodeDao {
   private final Redis redisClient;
   private final ObjectMapper objectMapper;
 
-  @SneakyThrows
-  public Completable saveCode(CodeModel model, String tenantId) {
-    return redisClient
-        .rxSend(
-            Request.cmd(Command.SET)
-                .arg(getCacheKey(model.getCode(), tenantId))
-                .arg(objectMapper.writeValueAsString(model))
-                .arg(EXPIRY_OPTION_REDIS)
-                .arg(model.getExpiry()))
-        .ignoreElement();
-  }
 
   public Maybe<CodeModel> getCode(String code, String tenantId) {
     return redisClient

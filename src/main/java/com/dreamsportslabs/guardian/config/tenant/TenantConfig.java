@@ -9,12 +9,5 @@ import lombok.ToString;
 @Builder
 public class TenantConfig {
   private String tenantId;
-  private AuthCodeConfig authCodeConfig;
-  private EmailConfig emailConfig;
-  private FbConfig fbConfig;
-  private GoogleConfig googleConfig;
-  private SmsConfig smsConfig;
-  private OtpConfig otpConfig;
-  private UserConfig userConfig;
   private TokenConfig tokenConfig;
 }

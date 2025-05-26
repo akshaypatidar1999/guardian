@@ -11,6 +11,5 @@ import lombok.NoArgsConstructor;
 public class Config {
   @NotNull private HttpServerOptions httpServerOptions;
   @NotNull @Valid private MySQLConfig mySQLConfig;
-  @NotNull @Valid private WebClientConfig webClientConfig;
   @NotNull @Valid private RedisConfig redisConfig;
 }
