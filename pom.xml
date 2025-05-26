@@ -15,7 +15,6 @@
     <app.release.artifact>/target/guardian</app.release.artifact>
     <google.guava.version>33.3.1-jre</google.guava.version>
     <google-api-client.version>2.7.0</google-api-client.version>
-    <fusionauth-jwt.version>5.3.3</fusionauth-jwt.version>
     <slf4j.version>2.0.7</slf4j.version>
     <logback.version>1.5.8</logback.version>
     <vertx.version>4.5.10</vertx.version>
@@ -114,7 +113,7 @@
     <dependency>
       <groupId>io.fusionauth</groupId>
       <artifactId>fusionauth-jwt</artifactId>
-      <version>${fusionauth-jwt.version}</version>
+      <version>5.3.3</version>
     </dependency>
   </dependencies>
 
